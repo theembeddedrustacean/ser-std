@@ -7,11 +7,11 @@
 Welcome to the _**Simplified Embedded Rust: ESP Standard Library Edition**_ book repository. Here you will find all the resources related to the book. You can get a copy of the book [here](https://www.theembeddedrustacean.com/c/ser-std).
 
 ## 📝 Reporting Issues & Content Suggestions
-If you find any text errors, typos, or formatting issues in the book, please [report a text error here]() so that it can be addressed in a later revision. 
+If you find any text errors, typos, or formatting issues in the book, please [report a text error here](https://github.com/theembeddedrustacean/ser-std/issues/new?assignees=&labels=documentation&projects=&template=text-error.md&title=) so that it can be addressed in a later revision. 
 
-If you find any code issues in the book, please [report a bug here]() so that it can be addressed in a later revision. 
+If you find any code issues in the book, please [report a bug here](https://github.com/theembeddedrustacean/ser-std/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=) so that it can be addressed in a later revision. 
 
-You are also welcome to [suggest a feature here]() so it may be considered for content in the future.
+You are also welcome to [suggest a feature here](https://github.com/theembeddedrustacean/ser-std/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=) so it may be considered for content in the future.
 
 ## 🔗 Links to Book Examples
 | Device   | Devkit | GitHub Links | Wokwi Links |
