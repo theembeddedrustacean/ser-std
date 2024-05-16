@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": -179.33,
+        "left": -250.67,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-ntc-temperature-sensor",
+        "id": "ntc1",
+        "top": -187.4,
+        "left": -535,
+        "attrs": {}
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "ntc1:GND", "esp:GND.1", "black", [ "h0" ] ],
+      [ "ntc1:VCC", "esp:3V3.1", "red", [ "h0" ] ],
+      [ "ntc1:OUT", "esp:4", "green", [ "h84.33", "v142.47", "h191.33", "v-66" ] ]
+    ],
+    "serialMonitor": { "display": "terminal" },
+    "dependencies": {}
+  }

@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": -76,
+        "left": -10,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-ds1307",
+        "id": "rtc1",
+        "top": -26.87,
+        "left": -229.1,
+        "rotate": 180,
+        "attrs": {}
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "esp:2", "rtc1:SCL", "green", [ "h-73.97", "v40.1" ] ],
+      [ "esp:3", "rtc1:SDA", "green", [ "h-63.97", "v40.5" ] ],
+      [ "rtc1:5V", "esp:5V.2", "red", [ "h59.74", "v35.6" ] ],
+      [ "rtc1:GND", "esp:GND.5", "black", [ "h51.07", "v36.27" ] ]
+    ],
+    "serialMonitor": { "display": "terminal" },
+    "dependencies": {}
+  }

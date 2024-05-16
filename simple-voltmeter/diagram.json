@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+     "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -179.33,
+      "left": -250.67,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -231.7, "left": -422.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "pot1:SIG", "esp:0", "green", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.5", "black", [ "v0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal" },
+  "dependencies": {}
+}

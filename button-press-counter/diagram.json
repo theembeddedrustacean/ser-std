@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+   "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": -179.33,
+        "left": -250.67,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": -95.61,
+        "left": -399.95,
+        "attrs": { "color": "green", "bounce": "0" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "btn1:1.r", "esp:0", "green", [ "v0" ] ],
+      [ "esp:GND.5", "btn1:2.r", "black", [ "h-58.76", "v-39.1" ] ]
+    ],
+    "serialMonitor": { "display": "terminal" },
+    "dependencies": {}
+  }

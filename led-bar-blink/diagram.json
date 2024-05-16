@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+    "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -76,
+      "left": -10,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    {
+      "type": "wokwi-led-bar-graph",
+      "id": "bargraph1",
+      "top": 151.87,
+      "left": 18.93,
+      "rotate": 90,
+      "attrs": { "color": "lime" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -29.8,
+      "left": -182,
+      "attrs": { "color": "green", "bounce": "0" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:19", "bargraph1:A8", "green", [ "h11.73", "v30.1", "h-79.33" ] ],
+    [ "esp:18", "bargraph1:A7", "green", [ "v0.37", "h20.4", "v50", "h-77.33" ] ],
+    [ "esp:4", "bargraph1:A6", "green", [ "v0.23", "h29.73", "v80", "h-77.33" ] ],
+    [ "esp:5", "bargraph1:A5", "green", [ "h39.73", "v100.5", "h-78" ] ],
+    [ "esp:6", "bargraph1:A4", "green", [ "h49.07", "v120.77", "h-78" ] ],
+    [ "esp:7", "bargraph1:A3", "green", [ "h59.07", "v140.37", "h-77.33" ] ],
+    [ "esp:8", "bargraph1:A2", "green", [ "h69.73", "v170.14", "h-78" ] ],
+    [ "esp:9", "bargraph1:A1", "green", [ "h80.4", "v189.74", "h-78.67" ] ],
+    [ "esp:10", "bargraph1:A9", "green", [ "v0.14", "h-20.11", "v60.67", "h31.33" ] ],
+    [ "esp:1", "bargraph1:A10", "green", [ "h-28.78", "v80.41", "h30.67" ] ],
+    [ "bargraph1:C1", "bargraph1:C2", "black", [ "v7.73", "h0.2" ] ],
+    [ "bargraph1:C3", "bargraph1:C2", "black", [ "v7.06", "h10.07" ] ],
+    [ "bargraph1:C4", "bargraph1:C3", "black", [ "v7.06", "h10.34" ] ],
+    [ "bargraph1:C5", "bargraph1:C4", "black", [ "v7.06", "h11.28" ] ],
+    [ "bargraph1:C6", "bargraph1:C5", "black", [ "v7.72", "h9.6" ] ],
+    [ "bargraph1:C7", "bargraph1:C6", "black", [ "v7.06", "h11.14" ] ],
+    [ "bargraph1:C8", "bargraph1:C7", "black", [ "v7.06", "h10.75" ] ],
+    [ "bargraph1:C9", "bargraph1:C8", "black", [ "v7.06", "h10.35" ] ],
+    [ "bargraph1:C10", "bargraph1:C9", "black", [ "v7.06", "h10.61" ] ],
+    [ "esp:GND.3", "bargraph1:C10", "black", [ "h-36.78", "v213.61", "h42" ] ],
+    [ "btn1:1.r", "esp:3", "green", [ "v0" ] ],
+    [ "btn1:2.r", "esp:GND.2", "black", [ "h21.33", "v-11.13" ] ]
+  ],
+  "serialMonitor": { "display": "terminal" },
+  "dependencies": {}
+}

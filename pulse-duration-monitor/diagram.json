@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+    "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -76,
+      "left": -10,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    { "type": "chip-sq-wave-gen", "id": "chip1", "top": 9.6, "left": -172.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "chip1:OUT2", "esp:0", "green", [ "h0" ] ],
+    [ "chip1:OUT1", "esp:1", "green", [ "h0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal" },
+  "dependencies": {}
+}
