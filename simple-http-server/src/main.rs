@@ -5,9 +5,15 @@ Programming IoT & Networking Services - Simple HTTP Server Application Example
 
 use esp_idf_svc::eventloop::EspSystemEventLoop;
 use esp_idf_svc::hal::peripherals::Peripherals;
-use esp_idf_svc::http::server::{Configuration as HttpServerConfig, EspHttpServer, Method};
+use esp_idf_svc::http::server::{
+    Configuration as HttpServerConfig, EspHttpServer,
+    Method,
+};
 use esp_idf_svc::nvs::EspDefaultNvsPartition;
-use esp_idf_svc::wifi::{AuthMethod, BlockingWifi, ClientConfiguration, Configuration, EspWifi};
+use esp_idf_svc::wifi::{
+    AuthMethod, BlockingWifi, ClientConfiguration,
+    Configuration, EspWifi,
+};
 use std::{thread::sleep, time::Duration};
 
 fn main() -> anyhow::Result<()> {
@@ -19,17 +25,23 @@ fn main() -> anyhow::Result<()> {
     let nvs = EspDefaultNvsPartition::take()?;
 
     let mut wifi = BlockingWifi::wrap(
-        EspWifi::new(peripherals.modem, sysloop.clone(), Some(nvs))?,
+        EspWifi::new(
+            peripherals.modem,
+            sysloop.clone(),
+            Some(nvs),
+        )?,
         sysloop,
     )?;
 
-    wifi.set_configuration(&Configuration::Client(ClientConfiguration {
-        ssid: "Wokwi-GUEST".try_into().unwrap(),
-        bssid: None,
-        auth_method: AuthMethod::None,
-        password: "".try_into().unwrap(),
-        channel: None,
-    }))?;
+    wifi.set_configuration(&Configuration::Client(
+        ClientConfiguration {
+            ssid: "Wokwi-GUEST".try_into().unwrap(),
+            bssid: None,
+            auth_method: AuthMethod::None,
+            password: "".try_into().unwrap(),
+            ..Default::default()
+        },
+    ))?;
 
     // Start Wifi
     wifi.start()?;
@@ -44,7 +56,8 @@ fn main() -> anyhow::Result<()> {
 
     // HTTP Configuration
     // Create HTTP Server Connection Handle
-    let mut httpserver = EspHttpServer::new(&HttpServerConfig::default())?;
+    let mut httpserver =
+        EspHttpServer::new(&HttpServerConfig::default())?;
 
     // Define Server Request Handler Behaviour on Get for Root URL
     httpserver.fn_handler("/", Method::Get, |request| {

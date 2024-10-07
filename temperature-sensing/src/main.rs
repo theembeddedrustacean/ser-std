@@ -4,9 +4,9 @@ Programming ADCs - Temperature Sensing Application Example
 */
 
 use esp_idf_svc::hal::adc::attenuation::DB_11;
-use esp_idf_svc::hal::adc::config::Resolution;
 use esp_idf_svc::hal::adc::oneshot::config::AdcChannelConfig;
 use esp_idf_svc::hal::adc::oneshot::*;
+use esp_idf_svc::hal::adc::Resolution;
 use esp_idf_svc::hal::delay::FreeRtos;
 use esp_idf_svc::hal::peripherals::Peripherals;
 use libm::log;
