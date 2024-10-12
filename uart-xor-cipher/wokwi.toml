@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/riscv32imc-esp-espidf/debug/uart-xor-cipher"
-firmware = "target/riscv32imc-esp-espidf/debug/uart-xor-cipher"
+elf = "target/xtensa-esp32-espidf/debug/uart-xor-cipher"
+firmware = "target/xtensa-esp32-espidf/debug/uart-xor-cipher"

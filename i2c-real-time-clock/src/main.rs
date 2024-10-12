@@ -17,7 +17,7 @@ fn main() {
 
     let peripherals = Peripherals::take().unwrap();
     let i2c = peripherals.i2c0;
-    let sda = peripherals.pins.gpio3;
+    let sda = peripherals.pins.gpio0;
     let scl = peripherals.pins.gpio2;
 
     let config = I2cConfig::new().baudrate(100.kHz().into());

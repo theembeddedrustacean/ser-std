@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/riscv32imc-esp-espidf/debug/connecting-wifi"
-firmware = "target/riscv32imc-esp-espidf/debug/connecting-wifi"
+elf = "target/xtensa-esp32-espidf/debug/connecting-wifi"
+firmware = "target/xtensa-esp32-espidf/debug/connecting-wifi"

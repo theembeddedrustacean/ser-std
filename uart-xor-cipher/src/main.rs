@@ -17,8 +17,8 @@ fn main() {
     esp_idf_svc::sys::link_patches();
 
     let peripherals = Peripherals::take().unwrap();
-    let tx = peripherals.pins.gpio5;
-    let rx = peripherals.pins.gpio6;
+    let tx = peripherals.pins.gpio18;
+    let rx = peripherals.pins.gpio19;
 
     let config = config::Config::new().baudrate(Hertz(115_200));
     let uart = UartDriver::new(

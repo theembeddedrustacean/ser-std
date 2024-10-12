@@ -18,7 +18,7 @@ fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
     // Instantiate ADC Driver
-    let adc1 = AdcDriver::new(peripherals.adc1).unwrap();
+    let adc2 = AdcDriver::new(peripherals.adc2).unwrap();
 
     // Configure ADC Channel
     let ch_config = AdcChannelConfig {
@@ -28,7 +28,7 @@ fn main() -> ! {
     };
 
     // Instantiate ADC Channel
-    let mut adc_chan = AdcChannelDriver::new(&adc1, peripherals.pins.gpio4, &ch_config).unwrap();
+    let mut adc_chan = AdcChannelDriver::new(&adc2, peripherals.pins.gpio4, &ch_config).unwrap();
 
     const B: f64 = 3950.0; // B value of the thermistor
     const VMAX: f64 = 4095.0; // Full Range Voltage

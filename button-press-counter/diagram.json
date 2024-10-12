@@ -4,26 +4,26 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-esp32-c3-rust-1",
+      "type": "board-esp32-devkit-c-v4",
       "id": "esp",
-      "top": -4.76,
-      "left": -4.65,
-      "attrs": { "builder": "rust-std-esp" }
+      "top": 0.59,
+      "left": 0.67,
+      "attrs": { "flashSize": "16" }
     },
     {
       "type": "wokwi-pushbutton",
       "id": "btn1",
-      "top": 44.6,
-      "left": -201.6,
+      "top": 121.4,
+      "left": 192,
       "attrs": { "color": "green", "bounce": "0" }
     }
   ],
   "connections": [
-    [ "esp:21", "$serialMonitor:RX", "", [] ],
-    [ "esp:20", "$serialMonitor:TX", "", [] ],
-    [ "esp:0", "btn1:2.r", "green", [ "h0" ] ],
-    [ "esp:GND", "btn1:1.r", "black", [ "h-76.8", "v-9.6" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:0", "btn1:2.l", "green", [ "h0" ] ],
+    [ "esp:GND.3", "btn1:1.l", "black", [ "h52.17", "v47.41" ] ]
   ],
-  "serialMonitor": { "display": "terminal" },
+  "serialMonitor": { "display": "terminal", "convertEol": true },
   "dependencies": {}
 }

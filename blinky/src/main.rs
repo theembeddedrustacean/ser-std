@@ -14,7 +14,7 @@ fn main() {
     // Take device peripherals
     let dp = Peripherals::take().unwrap();
     // Configure pin gpio1 to output
-    let mut led = PinDriver::output(dp.pins.gpio1).unwrap();
+    let mut led = PinDriver::output(dp.pins.gpio0).unwrap();
 
     loop {
         // 1. Turn on LED

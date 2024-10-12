@@ -4,18 +4,18 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-esp32-c3-rust-1",
+      "type": "board-esp32-devkit-c-v4",
       "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": { "builder": "rust-std-esp" }
+      "top": 0.59,
+      "left": 0.67,
+      "attrs": { "flashSize": "16" }
     }
   ],
   "connections": [
-    [ "esp:21", "$serialMonitor:RX", "", [] ],
-    [ "esp:20", "$serialMonitor:TX", "", [] ],
-    [ "esp:5", "esp:6", "green", [ "h-14.25", "v14.44" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:18", "esp:19", "green", [ "h13.77", "v-10.19" ] ]
   ],
-  "serialMonitor": { "display": "terminal" },
+  "serialMonitor": { "display": "terminal", "convertEol": true },
   "dependencies": {}
 }

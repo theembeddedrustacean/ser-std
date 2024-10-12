@@ -4,7 +4,11 @@ version = "0.1.0"
 authors = ["The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>"]
 edition = "2021"
 resolver = "2"
-rust-version = "1.71"
+rust-version = "1.77"
+
+[[bin]]
+name = "real-time-timer"
+harness = false # do not use the built in cargo test harness -> resolve rust-analyzer errors
 
 [profile.release]
 opt-level = "s"

@@ -26,7 +26,7 @@ fn main() {
     let mut pwm_driver = LedcDriver::new(
         peripherals.ledc.channel0,
         timer_driver,
-        peripherals.pins.gpio7,
+        peripherals.pins.gpio4,
     )
     .unwrap();
 

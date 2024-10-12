@@ -16,7 +16,7 @@ fn main() -> ! {
     let peripherals = Peripherals::take().unwrap();
 
     // Instantiate ADC Driver
-    let adc1 = AdcDriver::new(peripherals.adc1).unwrap();
+    let adc2 = AdcDriver::new(peripherals.adc2).unwrap();
 
     // Configure ADC Channel
     let ch_config = AdcChannelConfig {
@@ -26,7 +26,12 @@ fn main() -> ! {
     };
 
     // Instantiate ADC Channel
-    let mut adc_chan = AdcChannelDriver::new(&adc1, peripherals.pins.gpio0, &ch_config).unwrap();
+    let mut adc_chan = AdcChannelDriver::new(
+        &adc2,
+        peripherals.pins.gpio0,
+        &ch_config,
+    )
+    .unwrap();
 
     loop {
         // Get ADC Reading
@@ -34,7 +39,10 @@ fn main() -> ! {
         let raw_sample: u16 = adc_chan.read_raw().unwrap();
 
         // Print the temperature output
-        println!("Raw Reading: {}, Voltage Reading: {}mV", raw_sample, sample);
+        println!(
+            "Raw Reading: {}, Voltage Reading: {}mV",
+            raw_sample, sample
+        );
 
         // Wait half a second before next sample
         FreeRtos::delay_ms(500);

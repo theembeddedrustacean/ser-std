@@ -4,29 +4,22 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-esp32-c3-rust-1",
+      "type": "board-esp32-devkit-c-v4",
       "id": "esp",
-      "top": 14.44,
-      "left": -4.65,
-      "attrs": { "builder": "rust-std-esp" }
+      "top": 0.59,
+      "left": 0.67,
+      "attrs": { "flashSize": "16" }
     },
-    {
-      "type": "wokwi-ds1307",
-      "id": "rtc1",
-      "top": 75,
-      "left": -270.9,
-      "rotate": 180,
-      "attrs": {}
-    }
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 119.4, "left": 172.9, "attrs": {} }
   ],
   "connections": [
-    [ "esp:21", "$serialMonitor:RX", "", [] ],
-    [ "esp:20", "$serialMonitor:TX", "", [] ],
-    [ "rtc1:SDA", "esp:3", "green", [ "h161", "v-5.7" ] ],
-    [ "rtc1:SCL", "esp:2", "green", [ "h0" ] ],
-    [ "esp:5V", "rtc1:5V", "red", [ "h28.8", "v-124.8", "h-153.6", "v144" ] ],
-    [ "esp:GND", "rtc1:GND", "black", [ "h-38.4", "v57.6" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:2", "rtc1:SCL", "green", [ "h0" ] ],
+    [ "esp:0", "rtc1:SDA", "green", [ "h0" ] ],
+    [ "esp:5V", "rtc1:5V", "red", [ "h-24.48", "v18.61", "h172.8", "v-76.8" ] ],
+    [ "esp:GND.3", "rtc1:GND", "black", [ "h52.17", "v47.41" ] ]
   ],
-  "serialMonitor": { "display": "terminal" },
+  "serialMonitor": { "display": "terminal", "convertEol": true },
   "dependencies": {}
 }

@@ -14,19 +14,19 @@ fn main() {
     let dp = Peripherals::take().unwrap();
 
     // Configure all LED pins to digital outputs
-    let mut led1 = PinDriver::output(dp.pins.gpio0).unwrap();
-    let mut led2 = PinDriver::output(dp.pins.gpio1).unwrap();
-    let mut led3 = PinDriver::output(dp.pins.gpio2).unwrap();
-    let mut led4 = PinDriver::output(dp.pins.gpio3).unwrap();
-    let mut led5 = PinDriver::output(dp.pins.gpio4).unwrap();
-    let mut led6 = PinDriver::output(dp.pins.gpio5).unwrap();
-    let mut led7 = PinDriver::output(dp.pins.gpio6).unwrap();
-    let mut led8 = PinDriver::output(dp.pins.gpio7).unwrap();
-    let mut led9 = PinDriver::output(dp.pins.gpio8).unwrap();
-    let mut led10 = PinDriver::output(dp.pins.gpio9).unwrap();
+    let mut led1 = PinDriver::output(dp.pins.gpio22).unwrap();
+    let mut led2 = PinDriver::output(dp.pins.gpio23).unwrap();
+    let mut led3 = PinDriver::output(dp.pins.gpio32).unwrap();
+    let mut led4 = PinDriver::output(dp.pins.gpio33).unwrap();
+    let mut led5 = PinDriver::output(dp.pins.gpio25).unwrap();
+    let mut led6 = PinDriver::output(dp.pins.gpio26).unwrap();
+    let mut led7 = PinDriver::output(dp.pins.gpio27).unwrap();
+    let mut led8 = PinDriver::output(dp.pins.gpio14).unwrap();
+    let mut led9 = PinDriver::output(dp.pins.gpio12).unwrap();
+    let mut led10 = PinDriver::output(dp.pins.gpio13).unwrap();
 
     // Configure Button pin to input with Pull Up
-    let mut button = PinDriver::input(dp.pins.gpio19).unwrap();
+    let mut button = PinDriver::input(dp.pins.gpio4).unwrap();
     button.set_pull(Pull::Up).unwrap();
 
     // Initialize variable with starting delay
@@ -115,7 +115,7 @@ fn main() {
     }
 }
 
-fn button_pressed(but: &PinDriver<'_, Gpio19, Input>, del: &u32) -> u32 {
+fn button_pressed(but: &PinDriver<'_, Gpio4, Input>, del: &u32) -> u32 {
     // Check if Button has been pressed
     // If not pressed, return the delay value unchanged
     if but.is_low() {

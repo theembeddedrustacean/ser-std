@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/riscv32imc-esp-espidf/debug/led-bar-blink"
-firmware = "target/riscv32imc-esp-espidf/debug/led-bar-blink"
+elf = "target/xtensa-esp32-espidf/debug/led-bar-blink"
+firmware = "target/xtensa-esp32-espidf/debug/led-bar-blink"
