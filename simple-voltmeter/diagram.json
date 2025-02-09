@@ -1,23 +1,23 @@
 {
-  "version": 1,
-  "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
-  "editor": "wokwi",
-  "parts": [
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+     "parts": [
     {
-      "type": "board-esp32-c3-rust-1",
+      "type": "board-esp32-c3-devkitm-1",
       "id": "esp",
-      "top": 0,
-      "left": 0,
+      "top": -179.33,
+      "left": -250.67,
       "attrs": { "builder": "rust-std-esp" }
     },
-    { "type": "wokwi-potentiometer", "id": "pot1", "top": -49.3, "left": -192.2, "attrs": {} }
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -231.7, "left": -422.6, "attrs": {} }
   ],
   "connections": [
-    [ "esp:21", "$serialMonitor:RX", "", [] ],
-    [ "esp:20", "$serialMonitor:TX", "", [] ],
-    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
-    [ "esp:GND", "pot1:GND", "black", [ "h0" ] ],
-    [ "esp:0", "pot1:SIG", "green", [ "h0" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "pot1:SIG", "esp:0", "green", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.5", "black", [ "v0" ] ]
   ],
   "serialMonitor": { "display": "terminal" },
   "dependencies": {}

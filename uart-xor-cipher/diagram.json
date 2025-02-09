@@ -1,21 +1,21 @@
 {
-  "version": 1,
-  "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
-  "editor": "wokwi",
-  "parts": [
+    "version": 1,
+    "editor": "wokwi",
+    "author": "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
+    "parts": [
     {
-      "type": "board-esp32-c3-rust-1",
+      "type": "board-esp32-c3-devkitm-1",
       "id": "esp",
-      "top": 0,
-      "left": 0,
-      "attrs": { "builder": "rust-std-esp" }
+      "top": 0.59,
+      "left": 0.67,
+      "attrs": { "flashSize": "16" }
     }
   ],
   "connections": [
-    [ "esp:21", "$serialMonitor:RX", "", [] ],
-    [ "esp:20", "$serialMonitor:TX", "", [] ],
-    [ "esp:5", "esp:6", "green", [ "h-14.25", "v14.44" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:6", "esp:5", "green", [ "h21.93", "v8.71" ] ]
   ],
-  "serialMonitor": { "display": "terminal" },
+  "serialMonitor": { "display": "terminal", "convertEol": true },
   "dependencies": {}
 }
