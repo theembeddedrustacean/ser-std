@@ -8,12 +8,12 @@ edition = "2021"
 resolver = "2"
 rust-version = "1.71"
 
-[profile.release]
-opt-level = "s"
+# [profile.release]
+# opt-level = "s"
 
-[profile.dev]
-debug = true    # Symbols are nice and they don't increase the size on Flash
-opt-level = "z"
+# [profile.dev]
+# debug = true    # Symbols are nice and they don't increase the size on Flash
+# opt-level = "z"
 
 [features]
 default = ["std", "embassy", "esp-idf-svc/native"]
@@ -30,8 +30,8 @@ embassy = [
 ]
 
 [dependencies]
-log = { version = "0.4.22", default-features = false }
-esp-idf-svc = { version = "0.51.0", default-features = false }
+log = { workspace = true }
+esp-idf-svc = { workspace = true }
 anyhow = "1.0.89"
 
 [build-dependencies]
