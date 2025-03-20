@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/xtensa-esp32-espidf/debug/synchronizing-system-time"
-firmware = "target/xtensa-esp32-espidf/debug/synchronizing-system-time"
+elf = "../target/xtensa-esp32-espidf/debug/synchronizing-system-time"
+firmware = "../target/xtensa-esp32-espidf/debug/synchronizing-system-time"

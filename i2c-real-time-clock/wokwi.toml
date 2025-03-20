@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/xtensa-esp32-espidf/debug/i2c-real-time-clock"
-firmware = "target/xtensa-esp32-espidf/debug/i2c-real-time-clock"
+elf = "../target/xtensa-esp32-espidf/debug/i2c-real-time-clock"
+firmware = "../target/xtensa-esp32-espidf/debug/i2c-real-time-clock"

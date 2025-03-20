@@ -10,12 +10,12 @@ rust-version = "1.77"
 name = "pulse-duration-monitor"
 harness = false # do not use the built in cargo test harness -> resolve rust-analyzer errors
 
-[profile.release]
-opt-level = "s"
+# [profile.release]
+# opt-level = "s"
 
-[profile.dev]
-debug = true    # Symbols are nice and they don't increase the size on Flash
-opt-level = "z"
+# [profile.dev]
+# debug = true    # Symbols are nice and they don't increase the size on Flash
+# opt-level = "z"
 
 [features]
 default = ["std", "embassy", "esp-idf-svc/native"]
@@ -28,8 +28,8 @@ experimental = ["esp-idf-svc/experimental"]
 embassy = ["esp-idf-svc/embassy-sync", "esp-idf-svc/critical-section", "esp-idf-svc/embassy-time-driver"]
 
 [dependencies]
-log = { version = "0.4", default-features = false }
-esp-idf-svc = { version = "0.49", default-features = false }
+log = { workspace = true }
+esp-idf-svc = { workspace=true }
 
 [build-dependencies]
-embuild = "0.32.0"
+embuild = "0.33.0"

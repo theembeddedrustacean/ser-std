@@ -1,5 +1,5 @@
 [wokwi]
 version = 1
 gdbServerPort = 3333
-elf = "target/xtensa-esp32-espidf/debug/button-press-counter"
-firmware = "target/xtensa-esp32-espidf/debug/button-press-counter"
+elf = "../target/xtensa-esp32-espidf/debug/button-press-counter"
+firmware = "../target/xtensa-esp32-espidf/debug/button-press-counter"

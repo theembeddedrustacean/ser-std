@@ -4,7 +4,7 @@ Programming ADCs - Temperature Sensing Application Example
 */
 
 use esp_idf_svc::hal::adc::attenuation::DB_11;
-use esp_idf_svc::hal::adc::oneshot::config::AdcChannelConfig;
+use esp_idf_svc::hal::adc::oneshot::config::{AdcChannelConfig, Calibration};
 use esp_idf_svc::hal::adc::oneshot::*;
 use esp_idf_svc::hal::adc::Resolution;
 use esp_idf_svc::hal::delay::FreeRtos;
@@ -23,7 +23,7 @@ fn main() -> ! {
     // Configure ADC Channel
     let ch_config = AdcChannelConfig {
         attenuation: DB_11,
-        calibration: true,
+        calibration: Calibration::None,
         resolution: Resolution::Resolution12Bit,
     };
 
