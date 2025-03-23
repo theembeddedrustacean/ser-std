@@ -20,28 +20,10 @@ This is a list of the project links containing the example source code for the E
 | ESP32-C3 | [ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitm-1.html) | [ESP32-C3 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32c3dkm1) | 
 | ESP32    | [ESP32-Dev-KitC](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html#get-started-esp32-devkitc-board-front) | [ESP32 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32dkc) | 
 
-## 🔗 Wokwi Project Links
-This is a list of links to the Wokwi examples presented in each chapter. These are based on the ESP32-C3 device and would need to be rewired for other devices. The Wokwi setup for the different devices can be also extracted from the VSCode projects. If you notice a template missing or would like to request one, feel free to submit a feature request.
-| Chapter | Example Link |
-| ------- | ------------ |
-| **CH 5 - GPIO** | [Blinky](https://wokwi.com/projects/390146357737013249)<br>[LED Bar Blinking](https://wokwi.com/projects/390227640396906497)<br>[Button Press Counter](https://wokwi.com/projects/390146514698384385) |
-| **CH 6 - ADC** | [Simple Voltmeter](https://wokwi.com/projects/390334806232301569)<br>[Temperature Sensing](https://wokwi.com/projects/390227886760909825) |
-| **CH 7 - Timers & Counters** | [Pulse Duration Monitor](https://wokwi.com/projects/390192668237908993)<br>[Real-Time Timer](https://wokwi.com/projects/390145691083737089) |
-| **CH 8 - PWM** | [LED Fading](https://wokwi.com/projects/388253411769572353) |
-| **CH 9 - Serial Communication** | [UART XOR Cipher](https://wokwi.com/projects/390231605149450241)<br>[Interacting with an I2C RTC](https://wokwi.com/projects/390232372639107073) |
-| **CH 10 - IoT and Networking** | [Connecting to WiFi](https://wokwi.com/projects/390233808897991681)<br>[Simple HTTP Client](https://wokwi.com/projects/390235149956598785)<br>[Simple HTTP Server](https://wokwi.com/projects/390235381687723009)<br>[Syncronizing System Time](https://wokwi.com/projects/390237075173881857)|
+## 🔌 Project Templates for End of Chapter Questions
+Pre-wired project templates are provided to get you started with end of chapter questions. You can access all templates in the [End of Chapter Questions Branch](https://github.com/theembeddedrustacean/ser-std/tree/eoc_templates).
 
-## 🔌 Wiring Templates for End of Chapter Questions
-These are pre-wired templates to get you started with end of chapter questions. Questions that are not included would use exisiting book examples as templates. These are based on the ESP32-C3 device and would need to be rewired for other devices. If you notice a template missing or would like to request one, feel free to submit a feature request. 
-
-| Chapter | Question Links |
-| ------- | ---------------------- |
-| **CH 5 - GPIO** | [Q5](https://wokwi.com/projects/397692235770967041)<br>[Q6](https://wokwi.com/projects/397692838510337025)<br>[Q8 & Q9](https://wokwi.com/projects/397699927017798657)| 
-| **CH 6 - ADC** | [Q4](https://wokwi.com/projects/397702162614524929)<br>[Q5](https://wokwi.com/projects/397702270325303297)<br>[Q6 & Q7](https://wokwi.com/projects/397746259094848513) |
-| **CH 7 - Timers & Counters** | [Q2](https://wokwi.com/projects/397703448954162177) |
-| **CH 8 - PWM** | [Q3](https://wokwi.com/projects/397746565882019841)<br>[Q4](https://wokwi.com/projects/397746669510718465)<br>[Q5](https://wokwi.com/projects/397746791518866433)<br>[Q6](https://wokwi.com/projects/397746961987996673) |
-| **CH 9 - Serial Communication** | 🤷‍♂️ |
-| **CH 10 - IoT and Networking** | 🤷‍♂️ |
+Questions that are not included would use exisiting book examples as templates. These are based on the ESP32-C3 device and would need to be rewired for other devices. If you notice a template missing or would like to request one, feel free to submit a feature request.
 
 ## 🧑‍💻 Development Options
 
