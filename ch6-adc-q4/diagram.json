@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "author": "Apollo Labs",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": 0,
+        "left": 0,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-analog-joystick",
+        "id": "joystick1",
+        "top": -125.4,
+        "left": -205.8,
+        "attrs": {}
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "joystick1:GND", "esp:GND.1", "black", [ "v0" ] ],
+      [ "joystick1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+      [ "joystick1:SEL", "esp:2", "green", [ "v0" ] ],
+      [ "joystick1:HORZ", "esp:0", "orange", [ "v0" ] ],
+      [ "joystick1:VERT", "esp:1", "blue", [ "v0" ] ]
+    ],
+    "serialMonitor": { "display": "terminal", "convertEol": true },
+    "dependencies": {}
+  }

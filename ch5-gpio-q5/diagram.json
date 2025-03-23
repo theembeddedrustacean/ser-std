@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "author": "Apollo Labs",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -63.2,
+      "left": -160.98,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 6,
+      "left": 129,
+      "attrs": { "color": "red", "flip": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pir1:VCC", "esp:5V.1", "red", [ "v0" ] ],
+    [ "pir1:GND", "esp:GND.4", "black", [ "v0" ] ],
+    [ "pir1:OUT", "esp:0", "green", [ "v0" ] ],
+    [ "esp:9", "led1:A", "green", [ "h0" ] ],
+    [ "esp:GND.8", "led1:C", "black", [ "h0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "convertEol": true },
+  "dependencies": {}
+}

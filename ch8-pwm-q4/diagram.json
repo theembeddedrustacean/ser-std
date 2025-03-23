@@ -1,0 +1,33 @@
+{
+    "version": 1,
+    "author": "Apollo Labs",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": 0,
+        "left": 0,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": 6,
+        "left": 129,
+        "attrs": { "color": "orange", "flip": "1" }
+      },
+      { "type": "wokwi-potentiometer", "id": "pot1", "top": -39.7, "left": -192.2, "attrs": {} }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "led1:A", "esp:9", "green", [ "v0" ] ],
+      [ "esp:GND.6", "led1:C", "black", [ "v-0.3", "h157" ] ],
+      [ "pot1:VCC", "esp:3V3.2", "red", [ "v0" ] ],
+      [ "pot1:GND", "esp:GND.5", "black", [ "v0" ] ],
+      [ "pot1:SIG", "esp:0", "green", [ "v0" ] ]
+    ],
+    "serialMonitor": { "display": "terminal", "convertEol": true },
+    "dependencies": {}
+  }

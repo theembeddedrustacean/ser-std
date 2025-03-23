@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Apollo Labs",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 51.2,
+      "left": -287.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 6,
+      "left": 215.4,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 54,
+      "left": 196.2,
+      "attrs": { "color": "yellow", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 102,
+      "left": 177,
+      "attrs": { "color": "limegreen", "flip": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ldr1:AO", "esp:0", "green", [ "h0" ] ],
+    [ "ldr1:VCC", "esp:3V3.1", "red", [ "h38.4", "v-38.4" ] ],
+    [ "ldr1:GND", "esp:GND.2", "black", [ "h96", "v-10" ] ],
+    [ "esp:9", "led1:A", "green", [ "h0" ] ],
+    [ "led2:A", "esp:6", "green", [ "h-57.6", "v-9.3" ] ],
+    [ "esp:GND.6", "led3:C", "black", [ "v-0.3", "h99.4" ] ],
+    [ "led2:C", "esp:GND.6", "black", [ "v0" ] ],
+    [ "led1:C", "esp:GND.6", "black", [ "v0" ] ],
+    [ "esp:19", "led3:A", "green", [ "h0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "convertEol": true },
+  "dependencies": {}
+}

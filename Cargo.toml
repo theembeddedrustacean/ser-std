@@ -1,21 +1,17 @@
 [workspace]
 resolver = "2"
 members = [
-    "basic-project-template",
-    "blinky",
-    "button-press-counter",
-    "connecting-wifi",
-    "i2c-real-time-clock",
-    "led-bar-blink",
-    "led-fading",
-    "pulse-duration-monitor",
-    "real-time-timer",
-    "simple-http-client",
-    "simple-http-server",
-    "simple-voltmeter",
-    "synchronizing-system-time",
-    "temperature-sensing",
-    "uart-xor-cipher",
+    "ch5-gpio-q5",
+    "ch5-gpio-q6",
+    "ch5-gpio-q8-q9",
+    "ch6-adc-q4",
+    "ch6-adc-q5",
+    "ch6-adc-q6-q7",
+    "ch7-timers-q2",
+    "ch8-pwm-q3",
+    "ch8-pwm-q4",
+    "ch8-pwm-q5",
+    "ch8-pwm-q6",
 ]
 
 [workspace.dependencies]

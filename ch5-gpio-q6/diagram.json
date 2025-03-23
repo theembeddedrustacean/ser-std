@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "author": "The Embedded Rustacean",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 76.5,
+      "left": -166.98,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -270.8, "left": -52, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "keypad1:R1", "esp:9", "green", [ "v0" ] ],
+    [ "esp:8", "keypad1:R2", "green", [ "h0" ] ],
+    [ "keypad1:R3", "esp:7", "green", [ "v0" ] ],
+    [ "keypad1:R4", "esp:6", "green", [ "v0" ] ],
+    [ "keypad1:C1", "esp:5", "gold", [ "v0" ] ],
+    [ "keypad1:C2", "esp:4", "gold", [ "v0" ] ],
+    [ "keypad1:C3", "esp:18", "gold", [ "v0" ] ],
+    [ "keypad1:C4", "esp:19", "gold", [ "v0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "convertEol": true },
+  "dependencies": {}
+}

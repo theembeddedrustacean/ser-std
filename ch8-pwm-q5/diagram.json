@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "author": "Apollo Labs",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-esp32-c3-devkitm-1",
+        "id": "esp",
+        "top": 0,
+        "left": 0,
+        "attrs": { "builder": "rust-std-esp" }
+      },
+      {
+        "type": "wokwi-buzzer",
+        "id": "bz1",
+        "top": -26.4,
+        "left": -142.2,
+        "attrs": { "volume": "0.1" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "bz1:2", "esp:0", "red", [ "v0" ] ],
+      [ "bz1:1", "esp:GND.5", "black", [ "v0" ] ]
+    ],
+    "serialMonitor": { "display": "terminal", "convertEol": true },
+    "dependencies": {}
+  }

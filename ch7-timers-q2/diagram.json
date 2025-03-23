@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "author": "Apollo Labs",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": -9.9,
+      "left": 25.02,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 74.6,
+      "left": 201.6,
+      "attrs": { "color": "green", "bounce": "0", "label": "Start" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn2",
+      "top": 113,
+      "left": 201.6,
+      "attrs": { "color": "green", "bounce": "0", "label": "Stop" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn3",
+      "top": 151.4,
+      "left": 201.6,
+      "attrs": { "color": "green", "bounce": "0", "label": "Reset" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:7", "btn1:1.l", "green", [ "h55.18", "v-19.2" ] ],
+    [ "esp:6", "btn2:1.l", "green", [ "h55.18", "v9.6" ] ],
+    [ "esp:5", "btn3:1.l", "green", [ "h45.58", "v38.4" ] ],
+    [ "btn3:2.r", "esp:GND.10", "black", [ "h48.8", "v-143.6" ] ],
+    [ "btn1:2.r", "esp:GND.10", "black", [ "h48.8", "v-66.8" ] ],
+    [ "btn2:2.r", "esp:GND.10", "black", [ "h48.8", "v-105.2" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "convertEol": true },
+  "dependencies": {}
+}

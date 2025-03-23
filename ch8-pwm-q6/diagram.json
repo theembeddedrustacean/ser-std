@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "Apollo Labs",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-c3-devkitm-1",
+      "id": "esp",
+      "top": 76.5,
+      "left": -80.58,
+      "attrs": { "builder": "rust-std-esp" }
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -270.8,
+      "left": 86.7,
+      "attrs": { "columns": "3" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 160.4,
+      "left": -323.6,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 73.2,
+      "left": -255,
+      "attrs": { "color": "red", "flip": "" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 44.4,
+      "left": -226.2,
+      "attrs": { "color": "green", "flip": "" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "keypad1:R1", "esp:9", "orange", [ "v0" ] ],
+    [ "keypad1:R2", "esp:8", "orange", [ "v0" ] ],
+    [ "keypad1:R3", "esp:7", "orange", [ "v0" ] ],
+    [ "keypad1:R4", "esp:6", "orange", [ "v0" ] ],
+    [ "keypad1:C1", "esp:5", "blue", [ "v0" ] ],
+    [ "keypad1:C2", "esp:4", "blue", [ "v0" ] ],
+    [ "keypad1:C3", "esp:18", "blue", [ "v0" ] ],
+    [ "servo1:V+", "esp:5V.2", "red", [ "v0" ] ],
+    [ "servo1:GND", "esp:GND.5", "black", [ "v0" ] ],
+    [ "servo1:PWM", "esp:10", "purple", [ "h48", "v-19.4" ] ],
+    [ "led2:A", "esp:2", "green", [ "v0" ] ],
+    [ "esp:3", "led1:A", "green", [ "h0" ] ],
+    [ "esp:GND.2", "led2:C", "black", [ "h0" ] ],
+    [ "esp:GND.3", "led1:C", "black", [ "h0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "convertEol": true },
+  "dependencies": {}
+}
