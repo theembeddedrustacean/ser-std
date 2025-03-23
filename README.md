@@ -14,47 +14,25 @@ If you find any code issues in the book, please [report a bug here](https://gith
 You are also welcome to [suggest a feature here](https://github.com/theembeddedrustacean/ser-std/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=) so it may be considered for content in the future.
 
 ## 🔗 GitHub Project Links
-This is a list of the project links containing the example source code for the different ESP devkits. All projects were set up using VS Code as an editor. Each branch contains the same collection of code examples accommodated for the various ESP devkits supported by Wokwi. Click on the link for the device you desire to work with and clone that particular branch.
+This is a list of the project links containing the example source code for the ESP32-C3 and the ESP32. This covers both RISC-V and Xtensa architechtures. Apart from that, variations among devices for the examples in the book are minor. All projects were setup using VS Code as an editor. Each branch contains the same collection of code examples accomodated for the different ESP device. Click on the link for the device you desire to work with and clone that particular branch.
 | Device   | Devkit | GitHub Links |
 | -------- | ------ | ------------ | 
-| ESP32-C3 | [ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitm-1.html) | [ESP32-C3-DevKitM-1 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32c3dkm1) | 
-| ESP32-C3 | [ESP32-C3-DevKit-RUST-1](https://github.com/esp-rs/esp-rust-board/tree/v1.2) | [ESP32-C3-RUST-1 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32c3rust1) | 
-| ESP32-S2 | [ESP32-S2-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-devkitm-1-v1.html) | [ESP32-S2-DevKitM-1 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32s2dkm1) | 
-| ESP32-S3 | [ESP32-S3-DevKitC-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)    | [ESP32-S3-DevKitC-1 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32s3dkc1) | 
-| ESP32    | [ESP32-Dev-KitC](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html#get-started-esp32-devkitc-board-front) | [ESP32-DevKitC Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32dkc) | 
+| ESP32-C3 | [ESP32-C3-DevKitM-1](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitm-1.html) | [ESP32-C3 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32c3dkm1) | 
+| ESP32    | [ESP32-Dev-KitC](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html#get-started-esp32-devkitc-board-front) | [ESP32 Branch](https://github.com/theembeddedrustacean/ser-std/tree/esp32dkc) | 
 
-## 🔗 Wokwi Project Links
-This is a list of links to the Wokwi examples presented in each chapter. These are based on the ESP32-C3 device and would need to be rewired for other devices. The Wokwi setup for the different devices can be also extracted from the VSCode projects. If you notice a template missing or would like to request one, feel free to submit a feature request.
-| Chapter | Example Link |
-| ------- | ------------ |
-| **CH 5 - GPIO** | [Blinky](https://wokwi.com/projects/390146357737013249)<br>[LED Bar Blinking](https://wokwi.com/projects/390227640396906497)<br>[Button Press Counter](https://wokwi.com/projects/390146514698384385) |
-| **CH 6 - ADC** | [Simple Voltmeter](https://wokwi.com/projects/390334806232301569)<br>[Temperature Sensing](https://wokwi.com/projects/390227886760909825) |
-| **CH 7 - Timers & Counters** | [Pulse Duration Monitor](https://wokwi.com/projects/390192668237908993)<br>[Real-Time Timer](https://wokwi.com/projects/390145691083737089) |
-| **CH 8 - PWM** | [LED Fading](https://wokwi.com/projects/388253411769572353) |
-| **CH 9 - Serial Communication** | [UART XOR Cipher](https://wokwi.com/projects/390231605149450241)<br>[Interacting with an I2C RTC](https://wokwi.com/projects/390232372639107073) |
-| **CH 10 - IoT and Networking** | [Connecting to WiFi](https://wokwi.com/projects/390233808897991681)<br>[Simple HTTP Client](https://wokwi.com/projects/390235149956598785)<br>[Simple HTTP Server](https://wokwi.com/projects/390235381687723009)<br>[Syncronizing System Time](https://wokwi.com/projects/390237075173881857)|
+## 🔌 Project Templates for End of Chapter Questions
+Pre-wired project templates are provided to get you started with end of chapter questions. You can access all templates in the [End of Chapter Questions Branch](https://github.com/theembeddedrustacean/ser-std/tree/eoc_templates).
 
-## 🔌 Wiring Templates for End of Chapter Questions
-These are pre-wired templates to get you started with end of chapter questions. Questions that are not included would use exisiting book examples as templates. These are based on the ESP32-C3 device and would need to be rewired for other devices. If you notice a template missing or would like to request one, feel free to submit a feature request. 
-
-| Chapter | Question Links |
-| ------- | ---------------------- |
-| **CH 5 - GPIO** | [Q5](https://wokwi.com/projects/397692235770967041)<br>[Q6](https://wokwi.com/projects/397692838510337025)<br>[Q8 & Q9](https://wokwi.com/projects/397699927017798657)| 
-| **CH 6 - ADC** | [Q4](https://wokwi.com/projects/397702162614524929)<br>[Q5](https://wokwi.com/projects/397702270325303297)<br>[Q6 & Q7](https://wokwi.com/projects/397746259094848513) |
-| **CH 7 - Timers & Counters** | [Q2](https://wokwi.com/projects/397703448954162177) |
-| **CH 8 - PWM** | [Q3](https://wokwi.com/projects/397746565882019841)<br>[Q4](https://wokwi.com/projects/397746669510718465)<br>[Q5](https://wokwi.com/projects/397746791518866433)<br>[Q6](https://wokwi.com/projects/397746961987996673) |
-| **CH 9 - Serial Communication** | 🤷‍♂️ |
-| **CH 10 - IoT and Networking** | 🤷‍♂️ |
+Questions that are not included would use exisiting book examples as templates. These are based on the ESP32-C3 device and would need to be rewired for other devices. If you notice a template missing or would like to request one, feel free to submit a feature request.
 
 ## 🧑‍💻 Development Options
 
-### 1. 🌐 Wokwi Web Interface (Recommended)
-This is the recommended option for beginners as it is the quickest and easiest way to get started. Each code example has a corresponding project on [Wokwi](https://wokwi.com/), allowing you to run and modify the code directly from your web browser. Links to the examples are provided in the earlier section.
+> ⚠️ As of January 2025, Wowki stopped supporting the std builder on it's web interface. While the no_std builder is still supported on the web interface, an alternative beginner friendly option of using DevContainers and Wokwi with VSCode is introduced. With a few clicks in GitHub, Devcontainers enable the spawning of a full environment with all the book examples in a single workspace. Still, no need for any hardware and knowledge of Devcontainers is not required.
 
-### 2. 🌐🛠️ Wokwi Web Interface with Hardware
-If you prefer to work with physical hardware, Wokwi provides an approach to flash an external development board/device directly from the web interface. To do that you need to press F1 in the Wokwi code window to access the command palette. Afterward, you can select the "Flash Firmware to Device" option.
+### 1. 🌐 Development Containers (Recommended)
+This is the recommended option for beginners as it is the quickest and easiest way to get started. The full environment will be setup in your web browser with a few clicks and without leaving this repository. All you have to do is click on the green "Code" button in the upper right corder then navigate to the codespaces tab and click "create codespace on [device name]". A tab will automatically open setting up the whole environment with the example projects for you.
 
-### 3. 🏡🛠️ Local Editor with Physical Hardware  
+### 2. 🏡🛠️ Local Editor with Physical Hardware  
 If you prefer to develop locally with physical hardware, you can clone the examples locally and set them up to run on an external development board. The software required entails the ESP-IDF framework in addition to flashing tools to download code to the external hardware. The following links include the instructions for installing the ESP-IDF framework and flashing the development board.
 
 #### a) **Install Rust** 🦀: 
@@ -126,7 +104,7 @@ Afterward, to generate a `std` template run the following command:
 cargo generate esp-rs/esp-idf-template cargo
 ```
 
-### 4. 🏡🔮 Local Editor with Wokwi
+### 3. 🏡🔮 Local Editor with Wokwi
 If you prefer to develop locally with Wowki (no hardware), you can clone the examples locally and install the following extensions for the simulator:
 - [VSCode Wokwi Extension](https://docs.wokwi.com/vscode/getting-started)
 - [JetBrains Wokwi Plugin](https://plugins.jetbrains.com/plugin/23826-wokwi-simulator)
