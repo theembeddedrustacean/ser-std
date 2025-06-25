@@ -7,7 +7,7 @@
     "args": {
       "CONTAINER_USER": "esp",
       "CONTAINER_GROUP": "esp",
-      "ESP_BOARD": "esp32c3"
+      "ESP_BOARD": "esp32"
     }
   },
   // https://github.com/serialport/serialport-rs/issues/153
@@ -27,7 +27,7 @@
           "**/target/**": true
         },
         // "rust-analyzer.checkOnSave.command": "clippy",
-        "rust-analyzer.checkOnSave.allTargets": false,
+        // "rust-analyzer.checkOnSave.allTargets": false,
         "[rust]": {
           "editor.defaultFormatter": "rust-lang.rust-analyzer"
         }
