@@ -8,31 +8,22 @@ edition = "2021"
 resolver = "2"
 rust-version = "1.71"
 
-# [profile.release]
-# opt-level = "s"
+[profile.release]
+opt-level = "s"
 
-# [profile.dev]
-# debug = true    # Symbols are nice and they don't increase the size on Flash
-# opt-level = "z"
+[profile.dev]
+debug = true    # Symbols are nice, and they don't increase the size on Flash
+opt-level = "z"
 
 [features]
-default = ["std", "embassy", "esp-idf-svc/native"]
+default = []
 
-pio = ["esp-idf-svc/pio"]
-std = ["alloc", "esp-idf-svc/binstart", "esp-idf-svc/std"]
-alloc = ["esp-idf-svc/alloc"]
-nightly = ["esp-idf-svc/nightly"]
 experimental = ["esp-idf-svc/experimental"]
-embassy = [
-    "esp-idf-svc/embassy-sync",
-    "esp-idf-svc/critical-section",
-    "esp-idf-svc/embassy-time-driver",
-]
 
 [dependencies]
-log = { workspace = true }
-esp-idf-svc = { workspace = true }
-libm = "0.2.8"
+log = "0.4"
+esp-idf-svc = "0.51"
+libm = "0.2.0"
 
 [build-dependencies]
-embuild = "0.33.0"
+embuild = "0.33"

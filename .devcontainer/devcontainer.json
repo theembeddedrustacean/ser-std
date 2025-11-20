@@ -47,8 +47,7 @@
   "forwardPorts": [
     3333,
     8000
-  ]
-  // ,
-  // "workspaceMount": "target=/home/esp/devcontest,type=bind,consistency=cached",
-  // "workspaceFolder": "/home/esp/devcontest"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/devcontest,type=bind,consistency=cached",
+  "workspaceFolder": "/home/esp/devcontest"
 }
