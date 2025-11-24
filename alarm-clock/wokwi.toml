@@ -1,0 +1,9 @@
+[wokwi]
+version = 1
+gdbServerPort = 3333
+elf = "../target/riscv32imc-esp-espidf/debug/alarm-clock"
+firmware = "../target/riscv32imc-esp-espidf/debug/alarm-clock"
+
+[[chip]]
+name = 'tca6424'
+binary = 'dist/chip.wasm'

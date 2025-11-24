@@ -1,0 +1,49 @@
+name: Build Chip
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Build chip
+        uses: wokwi/wokwi-chip-clang-action@main
+        with:
+          sources: "src/main.c"
+      - name: Copy chip.json
+        run: sudo cp chip.json dist
+      - name: 'Upload Artifacts'
+        uses: actions/upload-artifact@v4
+        with:
+          name: chip
+          path: |
+            dist/chip.json
+            dist/chip.wasm
+
+  # The release job only runs when you push a tag starting with "v", e.g. v1.0.0 
+  release:
+    name: Release
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download compiled chip
+        uses: actions/download-artifact@v4
+        with:
+          name: chip
+          path: chip
+      - name: Create a zip archive
+        run: cd chip && zip -9 ../chip.zip chip.*
+        env:
+          ZIP_VERSION: ${{ github.ref_name }}
+      - name: Upload release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: chip.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true

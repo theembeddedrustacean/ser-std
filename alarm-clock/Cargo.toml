@@ -1,5 +1,5 @@
 [package]
-name = "blinky"
+name = "alarm-clock"
 version = "0.1.0"
 authors = [
     "The Embedded Rustacean <166909466+theembeddedrustacean@users.noreply.github.com>",
@@ -9,17 +9,18 @@ resolver = "2"
 rust-version = "1.71"
 
 [[bin]]
-name = "blinky"
+name = "alarm-clock"
 harness = false
 
 [features]
 default = []
-
 experimental = ["esp-idf-svc/experimental"]
 
 [dependencies]
 log = "0.4"
 esp-idf-svc = "0.51"
+bitmask-enum = "2.2.5"
+anyhow = "1.0"
 
 [build-dependencies]
 embuild = "0.33"

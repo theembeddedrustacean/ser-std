@@ -1,22 +1,6 @@
 [workspace]
 resolver = "2"
-members = [
-    "basic-project-template",
-    "blinky",
-    "button-press-counter",
-    "connecting-wifi",
-    "i2c-real-time-clock",
-    "led-bar-blink",
-    "led-fading",
-    "pulse-duration-monitor",
-    "real-time-timer",
-    "simple-http-client",
-    "simple-http-server",
-    "simple-voltmeter",
-    "synchronizing-system-time",
-    "temperature-sensing",
-    "uart-xor-cipher",
-]
+members = ["alarm-clock"]
 
 [workspace.dependencies]
 log = { version = "0.4.22", default-features = false }
