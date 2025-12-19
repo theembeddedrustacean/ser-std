@@ -23,16 +23,22 @@ const DEBOUNCE_COUNT: u32 = 8;
 const TCA6424_ADDR: u8 = 0x22;
 const RTC_ADDR: u8 = 0x68;
 
+// I/O Expander Register Addresses
 const IN_PORT0: u8 = 0x80;
 const IN_PORT1: u8 = 0x81;
-const OUT_PORT0: u8 = 0x84;
+const OUT_PORT0: u8 = 0x84; // Port0 has no outputs, here for completeness
 const OUT_PORT1: u8 = 0x85;
 const OUT_PORT2: u8 = 0x86;
 const CONFIG_PORT0: u8 = 0x8C;
 
+// Expander Pin direction configurations
 const PORT0_DIR: u8 = 0xFF; // All inputs on Port 0
 const PORT1_DIR: u8 = 0xC0; // Bits 0-5 output, 6-7 input
 const PORT2_DIR: u8 = 0x00; // All outputs (segments)
+
+// ===================================================================
+// Enums & Structures
+// ===================================================================
 
 // I/O Expander Pin Definitions
 #[bitmask(u8)]
@@ -70,10 +76,6 @@ pub enum IoExpPort2 {
     Dp,   // Port 2 Pin 6
     SegG, // Port 2 Pin 7
 }
-
-// ===================================================================
-// Enums & Structures
-// ===================================================================
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 enum Button {
@@ -210,7 +212,7 @@ impl TimeKeeper {
 }
 
 // ===================================================================
-// Drivers
+// Driver Structures
 // ===================================================================
 
 struct SharedBusDriver<'a> {
@@ -291,7 +293,7 @@ impl<'a> SharedBusDriver<'a> {
             &mut buf,
             BLOCK,
         )?;
-        let new = buf[0] | !IoExpPort1::PmLed.bits();
+        let new = buf[0] & !IoExpPort1::PmLed.bits();
         self.i2c.write(
             TCA6424_ADDR,
             &[OUT_PORT1, new],
@@ -302,48 +304,67 @@ impl<'a> SharedBusDriver<'a> {
 
     fn display_digit(
         &mut self,
-        idx: u8,
+        digit_index: u8,
         value: u8,
     ) -> Result<()> {
-        let digit_masks = [
-            IoExpPort1::Digit1,
-            IoExpPort1::Digit2,
-            IoExpPort1::Digit3,
-            IoExpPort1::Digit4,
+        let digit_pins = [
+            IoExpPort1::Digit1.bits(),
+            IoExpPort1::Digit2.bits(),
+            IoExpPort1::Digit3.bits(),
+            IoExpPort1::Digit4.bits(),
         ];
 
-        // 1. Blank all digits
-        let mut port1 = [0u8; 1];
-        self.i2c.write_read(
-            TCA6424_ADDR,
-            &[OUT_PORT1],
-            &mut port1,
-            BLOCK,
-        )?;
-        let blank = (port1[0] & 0xF0) | 0x0F;
-        self.i2c.write(
-            TCA6424_ADDR,
-            &[OUT_PORT1, blank],
-            BLOCK,
-        )?;
+        // Mask to clear all digit pins (pins 0-3)
+        let all_digits_mask = 0b0000_1111;
+        let mut segments = digit_to_segments(value);
 
-        // 2. Write segments
-        let seg = digit_to_segments(value)
-            | IoExpPort2::Dp.bits();
-        self.i2c.write(
-            TCA6424_ADDR,
-            &[OUT_PORT2, seg],
-            BLOCK,
-        )?;
+        // Set colon bit
+        segments |= IoExpPort2::Dp.bits();
 
-        // 3. Activate selected digit
-        let active = (port1[0] & 0xF0)
-            | (!digit_masks[idx as usize].bits() & 0x0F);
-        self.i2c.write(
-            TCA6424_ADDR,
-            &[OUT_PORT1, active],
-            BLOCK,
-        )?;
+        // 1. Read OUT_PORT1
+        let mut rbuf = [0u8];
+        self.i2c
+            .write_read(
+                TCA6424_ADDR,
+                &[OUT_PORT1],
+                &mut rbuf,
+                BLOCK,
+            )
+            .unwrap();
+        let current_port1 = rbuf[0];
+
+        // 2. Blanking: Deactivate all digits
+        let leds_state = current_port1 & !all_digits_mask;
+        let blank_state = leds_state | all_digits_mask;
+        self.i2c
+            .write(
+                TCA6424_ADDR,
+                &[OUT_PORT1, blank_state],
+                BLOCK,
+            )
+            .unwrap();
+
+        // 3. Write Segments to OUT_PORT2
+        self.i2c
+            .write(
+                TCA6424_ADDR,
+                &[OUT_PORT2, segments],
+                BLOCK,
+            )
+            .unwrap();
+
+        // 4. Activate selected digit
+        let new_digit_state = all_digits_mask
+            & !digit_pins[digit_index as usize];
+        let new_port1 = leds_state | new_digit_state;
+        self.i2c
+            .write(
+                TCA6424_ADDR,
+                &[OUT_PORT1, new_port1],
+                BLOCK,
+            )
+            .unwrap();
+
         Ok(())
     }
 
@@ -544,6 +565,7 @@ fn timer_int_callback() {
         .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
 
     // 5ms Flag
+    // if statement always true, kept for clarity
     if tick % 1 == 0 {
         FLAG_5MS.store(
             true,
@@ -561,7 +583,7 @@ fn timer_int_callback() {
 
     // 5 Minute Flag
     // 60000 ticks of 5ms = 5 minutes
-    if tick % 10000 == 0 {
+    if tick % 60000 == 0 {
         FLAG_5M.store(
             true,
             std::sync::atomic::Ordering::Relaxed,
@@ -641,7 +663,7 @@ fn main() -> Result<()> {
         TimerDriver::new(peripherals.timer00, &config)
             .unwrap();
     // Set timer alarm for 5 ms
-    timer1.set_alarm(timer1.tick_hz() / 500).unwrap();
+    timer1.set_alarm(timer1.tick_hz() / 200).unwrap();
 
     // Subscribe to timer interrupt callback
     unsafe { timer1.subscribe(timer_int_callback).unwrap() }
@@ -711,6 +733,7 @@ fn main() -> Result<()> {
                 past_snooze_button
             };
 
+            // Show Clock or Alarm Time
             let (h, m) = match tk.display_mode {
                 DisplayMode::ShowClock => (
                     tk.clocktime.hours,
@@ -725,25 +748,33 @@ fn main() -> Result<()> {
             // PM Indicator & 12/24 Hour Format Handling
             let mut dh = h;
             match events.fmt_sw {
-                FormatSwitch::H12(count) => {
-                    if count >= DEBOUNCE_COUNT {
-                        if h == 0 {
-                            dh = 12;
-                            i2c_bus_driver.pm_led_off()?;
-                        } else if h == 12 {
-                            dh = 12;
-                            i2c_bus_driver.pm_led_on()?;
-                        } else if h > 12 {
-                            dh = h - 12;
-                            i2c_bus_driver.pm_led_on()?;
-                        } else {
-                            i2c_bus_driver.pm_led_off()?;
-                        }
+                FormatSwitch::H12(count)
+                    if count >= DEBOUNCE_COUNT =>
+                {
+                    if h == 0 || h == 12 {
+                        dh = 12;
+                    } else if h > 12 {
+                        dh = h - 12;
+                    }
+                    // PM LED
+                    if h >= 12 {
+                        i2c_bus_driver.pm_led_on()?;
                     } else {
                         i2c_bus_driver.pm_led_off()?;
                     }
                 }
-                _ => {
+                FormatSwitch::H12(_) => {
+                    // Not debounced yet
+                    i2c_bus_driver.pm_led_off()?;
+                }
+                FormatSwitch::H24(count)
+                    if count >= DEBOUNCE_COUNT =>
+                {
+                    // 24-hour mode: no AM/PM needed
+                    i2c_bus_driver.pm_led_off()?;
+                }
+                FormatSwitch::H24(_) => {
+                    // Not debounced yet
                     i2c_bus_driver.pm_led_off()?;
                 }
             }
@@ -796,39 +827,25 @@ fn main() -> Result<()> {
             State::Armed => {
                 log::info!("{:?}", state);
                 alarm_led.set_high()?;
-                match events.alarm_sw {
-                    AlarmSwitch::Off(count) => {
-                        if count == DEBOUNCE_COUNT {
-                            State::Unarmed
-                        } else {
-                            State::Armed
-                        }
-                    }
-                    _ => match events.alarm_but {
-                        Button::Pressed(count) => {
-                            if count == DEBOUNCE_COUNT {
-                                State::SetAlarm
-                            } else {
-                                State::Armed
-                            }
-                        }
-                        _ => match events.time_but {
-                            Button::Pressed(count) => {
-                                if count == DEBOUNCE_COUNT {
-                                    State::SetTime
-                                } else {
-                                    State::Armed
-                                }
-                            }
-                            _ => {
-                                if tk.alarm_time_match() {
-                                    State::Alarming
-                                } else {
-                                    State::Armed
-                                }
-                            }
+                tk.show_clock_time();
+                buzzer.set_duty(0).unwrap();
+
+                // Check for alarm time match
+                if tk.alarm_time_match() {
+                    State::Alarming
+                }
+                // Handle user inputs (switch off, set alarm, set time)
+                else {
+                    match events.alarm_sw {
+                        AlarmSwitch::Off(count) if count == DEBOUNCE_COUNT => State::Unarmed,
+                        _ => match events.alarm_but {
+                            Button::Pressed(count) if count == DEBOUNCE_COUNT => State::SetAlarm,
+                            _ => match events.time_but {
+                                Button::Pressed(count) if count == DEBOUNCE_COUNT => State::SetTime,
+                                _ => State::Armed,  // Stay armed
+                            },
                         },
-                    },
+                    }
                 }
             }
             State::SetTime => {
@@ -905,24 +922,26 @@ fn main() -> Result<()> {
                             State::Alarming
                         }
                     }
-                    _ => match events.snooze_but {
-                        Button::Pressed(count) => {
-                            if count == DEBOUNCE_COUNT {
-                                // Reset Snooze Flag
-                                FLAG_5M.store(
+                    _ => {
+                        match events.snooze_but {
+                            Button::Pressed(count) => {
+                                if count == DEBOUNCE_COUNT {
+                                    // Reset Snooze Flag
+                                    FLAG_5M.store(
                                     false,
                                     std::sync::atomic::Ordering::Relaxed,
                                 );
-                                // Transition to Snooze State
-                                State::Snoozing
-                            } else {
-                                // Or continue Alarming
-                                State::Alarming
+                                    // Transition to Snooze State
+                                    State::Snoozing
+                                } else {
+                                    // Or continue Alarming
+                                    State::Alarming
+                                }
                             }
+                            // No action, continue alarming
+                            _ => State::Alarming,
                         }
-                        // No action, continue alarming
-                        _ => State::Alarming,
-                    },
+                    }
                 }
             }
             State::Snoozing => {
