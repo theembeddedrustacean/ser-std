@@ -6,6 +6,10 @@
 
 Welcome to the _**Simplified Embedded Rust: ESP Standard Library Edition**_ book repository. Here you will find all the resources related to the book. You can get a copy of the book [here](https://www.theembeddedrustacean.com/c/ser-std).
 
+## 🔋 Simplified Embedded Rust: ESP Standard Library Edition - Battery Pack
+
+The Simplified Embedded Rust: ESP Standard Library Edition book now has a [ser-std-battery-pack](https://crates.io/crates/ser-std-battery-pack) crate! The battery pack provides you with the ability to generate any book example on any of the Rust-supported ESP devices to run using Wokwi or hardware.
+
 ## 📝 Reporting Issues & Content Suggestions
 If you find any text errors, typos, or formatting issues in the book, please [report a text error here](https://github.com/theembeddedrustacean/ser-std/issues/new?assignees=&labels=documentation&projects=&template=text-error.md&title=) so that it can be addressed in a later revision. 
 
